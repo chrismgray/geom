@@ -1,0 +1,13 @@
+
+* Geometry for Clojure
+
+  This is a collection of data structures and algorithms that I have
+  found useful in implementing geometric algorithms in Clojure.
+
+  It is not exhaustive, nor has it been carefully designed.  It is
+  also not yet documented.  You probably shouldn't use it.
+
+* License
+
+  Copyright (C) 2011, Chris Gray. Distributed under the GNU GPL,
+  version 3 or later.
