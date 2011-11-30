@@ -68,3 +68,17 @@
 
 (defn pts-list-to-region [pts]
   (map new-seg (cons (last pts) pts) pts))
+
+(defn angle-between-segs
+  "Finds the angle between two segments (in radians).
+   Neither of the segments should have zero length.  If they do,
+   a divide-by-error exception will be thrown.  Also, the end
+   of s1 should be the same as the start of s2."
+  [s1 s2]
+  (assert (= (s1 :e2) (s2 :e1)))
+  (let [c-sq (pt/sq-dist (s1 :e1) (s2 :e2))
+        b-sq (pt/sq-dist (s2 :e1) (s2 :e2))
+        a-sq (pt/sq-dist (s1 :e1) (s1 :e2))
+        a (Math/sqrt a-sq)
+        b (Math/sqrt b-sq)]
+    (Math/acos (/ (- c-sq b-sq a-sq) (* 2 a b)))))

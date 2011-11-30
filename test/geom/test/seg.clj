@@ -149,3 +149,13 @@
     (is (= [true true false true]
            (vec (map #(pt-inside-region? % r1) pts))))))
 
+(deftest seg-angles
+  (let [p1 (pt/new-pt 1 1)
+        p2 (pt/new-pt 1 4)
+        p3 (pt/new-pt 5 4)
+        s1 (new-seg p1 p2)
+        s2 (new-seg p2 p3)]
+    (is (< (Math/abs (- (/ Math/PI 2) (angle-between-segs s1 s2))) 1e-10))
+    (is (thrown? java.lang.AssertionError
+                 (angle-between-segs s2 s1)))))
+
